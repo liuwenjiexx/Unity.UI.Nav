@@ -4,6 +4,52 @@ UI界面导航，使用MVC（Model，View，Controller）设计模式分离UI代
 
 
 
+## 使用
+
+
+#### 打开主界面
+
+```c#
+Nav.SetHome(Nav.Push("Home"));
+```
+
+`SetHome` 设置主页防止被关闭
+
+#### 打开界面
+
+```c#
+Nav.Push("Home/Window1");
+```
+
+#### 打开包含OK按钮的对话框
+
+```
+Nav.Push("Dialog/OK", new { content = "my content" });
+```
+
+#### 打开包含Yes和No按钮的对话框
+
+```
+Nav.Push("Dialog/YesNo", new { content = "my content" });
+```
+
+
+
+### 使用封装的 `UIManager`
+
+```
+UIManager.OpenHome("Home");
+UIManager.Open("Home/Window1");
+UIManager.DialogOK("my content");
+UIManager.DialogYesNo("my content", (button) =>
+	{
+		Debug.Log("button: " + button);
+	});
+```
+
+
+
+
 
 
 ## Url 格式
@@ -74,38 +120,12 @@ Context.RouteData["controller"]
 
 
 
-## 默认Url
+### 添加默认Url
 
 Url
 
 ```c#
 Nav.Root.Routes.Add("default", new Route("{controller=Home}/{action?}/{id?}", new NavRouteHandler()));
-```
-
-#### 主界面
-
-```c#
-Nav.SetHome(Nav.Push("Home"));
-```
-
-`SetHome` 设置主页防止被关闭
-
-#### 打开界面
-
-```c#
-Nav.Push("Home/Window1");
-```
-
-#### 打开包含OK按钮的对话框
-
-```
-Nav.Push("Dialog/OK", new { content = "my content" });
-```
-
-#### 打开包含Yes和No按钮的对话框
-
-```
-Nav.Push("Dialog/YesNo", new { content = "my content" });
 ```
 
 
