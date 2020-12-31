@@ -1,0 +1,17 @@
+{
+    "name": "UnityEditor.UI.Nav",
+    "references": [
+        "GUID:11c29921b380c6c4bae6d199e30654bd"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

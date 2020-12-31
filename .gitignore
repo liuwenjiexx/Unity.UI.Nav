@@ -1,0 +1,16 @@
+/Library
+/obj
+/temp
+/*.csproj
+/*.sln
+/.vs
+/*.suo
+/*.userprefs
+/*.unityproj
+/ProjectSettings/ProjectVersion.txt
+/ProjectSettings/
+/Packages/manifest.json
+/Logs/
+packages-lock.json
+/UserSettings/
+/.vsconfig

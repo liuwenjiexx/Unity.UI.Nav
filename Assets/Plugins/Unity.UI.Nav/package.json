@@ -1,0 +1,11 @@
+{
+  "name": "unity.ui.nav",
+  "displayName": "UI Navigation",
+  "version": "0.0.1",
+  "unity": "2019.1",
+  "keywords": [
+    "ui",
+    "navigation"
+  ],
+  "category": "UI"
+}
