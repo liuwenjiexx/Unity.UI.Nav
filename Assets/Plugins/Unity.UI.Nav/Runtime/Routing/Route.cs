@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace UnityEngine.UI.Navs.Routing
+namespace Unity.UI.Routing
 {
 
     /// <summary>
@@ -24,6 +26,8 @@ namespace UnityEngine.UI.Navs.Routing
         /// 参数为可选的
         /// </summary>
         public static readonly object Optional = Type.Missing;
+
+        public const string ParameterName = "_parameter";
 
         public Route(string pattern, IRouteHandler routeHandler)
             : this(pattern, null, null, null, routeHandler)
@@ -204,6 +208,7 @@ namespace UnityEngine.UI.Navs.Routing
 
             RouteData routeData = new RouteData();
 
+            routeData.Values[Route.ParameterName] = parameter;
 
 
             for (int i = 0; i < parameters.Count; i++)
@@ -212,7 +217,12 @@ namespace UnityEngine.UI.Navs.Routing
                 var g = m.Groups[param.Name];
                 if (g.Success)
                 {
-                    routeData.Values[param.Name] = g.Value;
+                    string v = g.Value;
+                    if (!string.IsNullOrEmpty(v))
+                    {
+                        v = Uri.UnescapeDataString(v);
+                    }
+                    routeData.Values[param.Name] = v;
                 }
                 else
                 {
@@ -229,16 +239,20 @@ namespace UnityEngine.UI.Navs.Routing
                     routeData.Values[item.Key] = item.Value;
             }
 
+
             if (parameter != null)
             {
                 IDictionary<string, object> dic = parameter as IDictionary<string, object>;
                 if (dic == null)
                 {
-                    dic = ObjectToDictionary(parameter);
+                    if (IsAnonymousType(parameter.GetType()))
+                        dic = ObjectToDictionary(parameter);
                 }
-
-                foreach (var item in dic)
-                    routeData.Values[item.Key] = item.Value;
+                if (dic != null)
+                {
+                    foreach (var item in dic)
+                        routeData.Values[item.Key] = item.Value;
+                }
             }
 
             routeData.RouteHandler = RouteHandler;
@@ -253,7 +267,7 @@ namespace UnityEngine.UI.Navs.Routing
                     routeData.Values[pInfo.Name] = value;
                 }*/
             if (value == null)
-                return new Dictionary<string, object>();
+                return null;
             var dic = value as Dictionary<string, object>;
             if (dic != null)
                 return dic;
@@ -262,6 +276,21 @@ namespace UnityEngine.UI.Navs.Routing
                 .ToDictionary(o => o.Name, o => o.GetValue(value));
         }
 
+        public static bool IsAnonymousType(Type type)
+        {
+            if (type == null) return false;
+
+            // Anonymous types are always:
+            // 1. Marked with [CompilerGenerated]
+            // 2. Generic (in most cases)
+            // 3. Not public
+            // 4. Have a name containing "AnonymousType"
+            return Attribute.IsDefined(type, typeof(CompilerGeneratedAttribute), false)
+                   && type.IsGenericType && type.Name.Contains("AnonymousType")
+                   && (type.Name.StartsWith("<>", StringComparison.OrdinalIgnoreCase) ||
+                       type.Name.StartsWith("VB$", StringComparison.OrdinalIgnoreCase))
+                   && (type.Attributes & TypeAttributes.NotPublic) == TypeAttributes.NotPublic;
+        }
     }
 
 

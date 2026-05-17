@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace UnityEngine.UI.Navs.Routing
+namespace Unity.UI.Routing
 {
 
     public class RouteData
     {
-        private Dictionary<string, object> values = new Dictionary<string, object>();
-        private Dictionary<string, object> metadata = new Dictionary<string, object>();
+        private Dictionary<string, object> values = new (StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, object> metadata = new (StringComparer.InvariantCultureIgnoreCase);
 
         public Dictionary<string, object> Values { get => values; }
 

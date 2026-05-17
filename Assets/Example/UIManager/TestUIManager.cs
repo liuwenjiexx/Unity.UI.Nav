@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Unity.UI.Navs;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UI.Navs;
 
 //namespace UnityEngine.UI.Navs.Example
 //{
@@ -15,34 +12,26 @@ public class TestUIManager : MonoBehaviour
     }
 }
 
-class UIMgrResourcesViewResult : ViewResult
+class UIMgrResourcesViewResult : ResourcesViewResult
 {
-    public string Path { get; set; }
 
-    public override void Load(Context context)
+    public UIMgrResourcesViewResult(string viewName, string resourcePath, Transform parent, NavContext context)
+        : base(viewName, resourcePath, parent, context)
     {
-        base.Load(context);
-        if (Status == ViewResultStatus.Loading)
-        {
-            GameObject prefab = Resources.Load<GameObject>(Path);
-            var go = GameObject.Instantiate(prefab);
-            View = go.GetComponent<View>();
-            if (!View)
-                View = go.AddComponent<View>();
-            View.ViewData = ViewData;
-            View.Model = Model;
-            GameObject = go;
 
-
-            int layer = UIManager.LAYER_DEFAULT;
-            if (context.RouteData.Values.ContainsKey("__layer"))
-                layer = (int)context.RouteData["__layer"];
-            Transform parent = UIManager.Instance.uiLayers[layer];
-            go.transform.SetParent(parent,false);
-            OnLoaded();
-        }
     }
 
+    protected override void OnLoaded()
+    {
+        GameObject go = GameObject;
+        int layer = UIManager.LAYER_DEFAULT;
+        if (Context.RouteData.Values.ContainsKey("__layer"))
+            layer = (int)Context.RouteData["__layer"];
+        Transform parent = UIManager.Instance.uiLayers[layer];
+        go.transform.SetParent(parent, false);
+        base.OnLoaded();
+    }
+    /*
     public override void Unload()
     {
         base.Unload();
@@ -54,7 +43,7 @@ class UIMgrResourcesViewResult : ViewResult
             GameObject = null;
             OnUnloaded();
         }
-    }
+    }*/
 }
 
 

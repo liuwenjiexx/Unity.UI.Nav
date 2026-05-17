@@ -1,4 +1,4 @@
-﻿namespace UnityEngine.UI.Navs.Routing
+﻿namespace Unity.UI.Routing
 {
 
     internal class RouteParameter

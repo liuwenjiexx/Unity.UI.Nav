@@ -2,30 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UI.Navs;
+using Unity.UI.Navs;
 
-public class TestView : View
+public class TestView : Navigable
 {
-    public int value;
     public Text label;
-     
-    private void OnEnable()
+    const string ValueKey = "Value";
+
+
+    protected override void Refresh()
     {
-        value = Random.Range(1, 100);
-        UpdateUI();
-    }
-    void UpdateUI()
-    {
+        base.Refresh();
         if (label)
         {
-            label.text = value.ToString();
+            label.text = ViewData[ValueKey].ToString();
         }
     }
 
-    protected override void OnShow()
+    public override void OnLoad()
     {
-        base.OnShow();
-        UpdateUI();
+        base.OnLoad();
+        if (!ViewData.ContainsKey(ValueKey))
+        {
+            ViewData[ValueKey] = Random.Range(1, 100);
+        }
+    }
+
+    public override void OnNavigationFrom(NavContext from)
+    {
+        base.OnNavigationFrom(from);
+        Refresh();
     }
 
 }

@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityEngine.UI.Navs
+namespace Unity.UI.Navs
 {
     public class NavBackingEventArgs : EventArgs
     {
-        internal NavBackingEventArgs(INav nav, string url)
+        internal NavBackingEventArgs(INavigation nav, NavContext context, string url)
         {
-            this.Navigation = nav;
+            this.Navigation = context.Navigation;
+            this.Context = context;
             this.Url = url;
         }
-
-        public INav Navigation { get; private set; }
+        public NavContext Context { get; private set; }
+        public INavigation Navigation { get; private set; }
 
         public string Url { get; private set; }
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace UnityEngine.UI.Navs.Example
+namespace Unity.UI.Navs.Example
 {
-    public class HomeView : View
+    public class HomeView : Navigable
     {
         public void OpenDialogOK()
         {

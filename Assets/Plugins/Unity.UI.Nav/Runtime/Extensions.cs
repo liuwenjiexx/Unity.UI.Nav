@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace UnityEngine.UI.Navs
+namespace Unity.UI.Navs
 {
 
     public static partial class Extensions
     {
-
-        public static int Push(this INav nav, string url, object parameter)
+        /*
+        public static int Push(this INavigation nav, string url, object parameter)
         {
-            return nav.Navigation(NavMode.Push, url, parameter);
+            return nav.Navigate(NavMode.Push, url, parameter);
         }
 
-        public static int Replace(this INav nav, string url, object parameter)
+        public static int Replace(this INavigation nav, string url, object parameter)
         {
-            return nav.Navigation(NavMode.Replace, url, parameter);
+            return nav.Navigate(NavMode.Replace, url, parameter);
         }
-
+        */
     }
 }

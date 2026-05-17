@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine.UI.Navs.Routing;
+using Unity.UI.Routing;
 
-namespace UnityEngine.UI.Navs
+namespace Unity.UI.Navs
 {
     /// <summary>
     /// default route pattern: {controller=Home}/{action?}/{id?}
@@ -13,7 +13,7 @@ namespace UnityEngine.UI.Navs
         public const string DefaultPattern = "{controller=Home}/{action?}/{id?}";
         static Dictionary<string, Type> cachedControllerTypes;
 
-        public virtual void ProcessRoute(Context context)
+        public virtual void ProcessRoute(NavContext context)
         {
             RouteData routeData = context.RouteData;
               
@@ -21,7 +21,7 @@ namespace UnityEngine.UI.Navs
                 context.ActionName = routeData.Values["action"] as string;
         }
 
-        public virtual Controller GetController(Context context)
+        public virtual Controller GetController(NavContext context)
         {
             Controller controller = null;
 

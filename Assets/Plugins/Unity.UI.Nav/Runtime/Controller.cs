@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Reflection;
-using UnityEngine.UI.Navs.Routing;
+using Unity.UI.Routing;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
-namespace UnityEngine.UI.Navs
+namespace Unity.UI.Navs
 {
 
     /// <summary>
@@ -12,12 +15,19 @@ namespace UnityEngine.UI.Navs
     /// </summary>
     public abstract class Controller
     {
-        public Context Context { get; internal set; }
+        public virtual void Initialize(NavContext context)
+        {
+            Context = context;
+            context.Controller = this;
+
+        }
+
+        public NavContext Context { get; private set; }
 
         /// <summary>
-        /// 视图数据字典，视图与控制器之间传递数据
+        /// 视图共享数据，视图与控制器之间传递数据
         /// </summary>
-        public Dictionary<string, object> ViewData { get; set; } = new Dictionary<string, object>();
+        public Dictionary<string, object> ViewData { get; } = new();
 
         /// <summary>
         /// viewName 优先为 {action}，如果action为空则为 {controller}
@@ -65,7 +75,7 @@ namespace UnityEngine.UI.Navs
         }
 
 
-        public virtual ViewResult GetActionResult(string actionName, Context context)
+        public virtual ViewResult GetActionResult(string actionName, NavContext context)
         {
             ViewResult view = null;
             if (!string.IsNullOrEmpty(actionName))
@@ -90,19 +100,23 @@ namespace UnityEngine.UI.Navs
                         {
                             if (value == Route.Optional)
                             {
-                                if (pInfo.IsDefined(typeof(OptionalAttribute)))
-                                    value = Type.Missing;
-                                else
-                                    throw new Exception("parameter not default value: " + pInfo.Name);
+                                value = Type.Missing;
                             }
                         }
                         else
                         {
-                            if (pInfo.IsDefined(typeof(OptionalAttribute)))
-                                value = Type.Missing;
-                            else
-                                throw new Exception($"not found parameter method <{type.Name}.{mInfo.Name}>");
+                            value = Type.Missing;
+                            if (ps.Length == 1 && context.RouteData.Values.TryGetValue(Route.ParameterName, out var p) && p != null)
+                            {
+                                if (pInfo.ParameterType.IsAssignableFrom(p.GetType()))
+                                {
+                                    value = p;
+                                }
+                            }
                         }
+
+                        if (value == Type.Missing && !pInfo.IsDefined(typeof(OptionalAttribute)))
+                            throw new Exception($"not found parameter method <{type.Name}.{mInfo.Name}>");
 
                         if (value != null)
                         {
@@ -122,6 +136,10 @@ namespace UnityEngine.UI.Navs
                     if (view == null)
                         throw new Exception($"require return View, Action: {actionName}");
                 }
+                //else
+                //{
+                //    Debug.LogError($"Not found action. type: {type}, method: {actionName}");
+                //}
             }
             //调用默认的 Action
             if (view == null)
@@ -136,65 +154,35 @@ namespace UnityEngine.UI.Navs
         /// </summary>
         /// <param name="mode"></param>
         /// <param name="from"></param>
-        public virtual void OnEnter(NavMode mode, Context from)
+        public virtual void OnEnter(NavMode mode, NavContext from)
         {
             var viewResult = Context.ViewResult;
-            if (mode == NavMode.Push || mode == NavMode.Replace)
+
+            if (viewResult.Status == ViewResultStatus.None)
             {
-                //第一次打开
                 viewResult.Load(Context);
-                viewResult.Loaded += (r) =>
-                {
-                    var view = viewResult.View;
-                    if (view != null)
-                    {
-                        view.Show();
-                    }
-                };
             }
-            else
-            {
-                viewResult.Loaded += (r) =>
-                {
-                    var view = viewResult.View;
-                    if (view != null)
-                    {
-                        view.Show();
-                    }
-                };
-            }
+            viewResult.OnNavEnter(from);
+
         }
 
-        public virtual void OnExit(NavMode mode, Context to)
+        public virtual void OnExit(NavMode mode, NavContext to, bool unload)
         {
             var viewResult = Context.ViewResult;
-            if (!Nav.IsHome(Context.Id))
+            // if (!Nav.IsHome(Context.Id))
             {
-                if (mode != NavMode.Push)
+                if (viewResult != null)
                 {
-                    if (viewResult != null)
+                    viewResult.OnNavLeave(to);
+                    if (unload)
                     {
-                        if (viewResult.View != null)
+                        if (!(viewResult.Status == ViewResultStatus.Unloading || viewResult.Status == ViewResultStatus.Unloaded))
                         {
-                            viewResult.View.Hide();
+                            viewResult.Unload();
                         }
-                        viewResult.Unload();
                     }
                 }
-                else
-                {
-                    viewResult.Loaded += (r) =>
-                    {
-                        var view = viewResult.View;
-                        if (view != null)
-                        {
-                            if (view.HideOnExit)
-                            {
-                                view.Hide();
-                            }
-                        }
-                    };
-                }
+
             }
         }
 

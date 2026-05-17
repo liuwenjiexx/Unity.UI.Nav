@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace UnityEngine.UI.Navs.Routing
+namespace Unity.UI.Routing
 {
 
     public class RouteCollection : Collection<Route>
@@ -50,7 +50,7 @@ namespace UnityEngine.UI.Navs.Routing
                     return routeData;
             }
 
-            throw new RouteException(url); 
+            return null;
         }
 
     }

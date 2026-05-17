@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace UnityEngine.UI.Navs
+namespace Unity.UI.Navs
 {
 
     public abstract class NavLoading : MonoBehaviour
@@ -66,22 +67,22 @@ namespace UnityEngine.UI.Navs
         /// </summary>
         public static void LoadScene(string sceneName, string loadingSceneName, Action callback)
         {
-            NavBehaviour.Instance.StartCoroutine(_LoadScene(sceneName, loadingSceneName, callback));
+            _LoadScene(sceneName, loadingSceneName, callback);
         }
 
-        static IEnumerator _LoadScene(string sceneName, string loadingSceneName, Action callback)
+        static async void _LoadScene(string sceneName, string loadingSceneName, Action callback)
         {
             Debug.Assert(!string.IsNullOrEmpty(sceneName));
             Debug.Assert(!isLoading);
             if (isLoading)
-                yield break;
+                return;
             isLoading = true;
             all.Clear();
             if (!string.IsNullOrEmpty(loadingSceneName))
             {
                 if (LoadSceneHandler == null)
                 {
-                    yield return SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Single);
+                    await SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Single);
                 }
                 else
                 {
@@ -92,10 +93,12 @@ namespace UnityEngine.UI.Navs
                         p = v;
                     });
                     while (p < 1f)
-                        yield return null;
+                    {
+                        await Task.Delay(100);
+                    }
                 }
             }
-            NavBehaviour.Instance.Clear();
+
             Debug.Assert(!string.IsNullOrEmpty(sceneName));
             float progress = 0f;
             bool isLoadingScene = false;
@@ -106,7 +109,7 @@ namespace UnityEngine.UI.Navs
             bool sceneDone = false;
 
             //等待一帧才能获得所有NavLoading组件
-            yield return null;
+            await Task.Delay(10);
 
             while (progress < 1f)
             {
@@ -158,7 +161,7 @@ namespace UnityEngine.UI.Navs
                         if (SceneManager.GetActiveScene().name != sceneName)
                         {
                             //编辑器下需要等待帧
-                            yield return null;
+                            await Task.Delay(10);
                             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
                         }
                     }
@@ -170,13 +173,13 @@ namespace UnityEngine.UI.Navs
                     if (item.isActiveAndEnabled)
                         item.OnProgress(progress);
                 }
-                yield return null;
+                await Task.Delay(10);
             }
 
 
             if (!string.IsNullOrEmpty(loadingSceneName))
             {
-                yield return SceneManager.UnloadSceneAsync(loadingSceneName);
+               await SceneManager.UnloadSceneAsync(loadingSceneName);
             }
 
             isLoading = false;
@@ -213,7 +216,7 @@ namespace UnityEngine.UI.Navs
                 float weight = list[i] / totalWeight;
                 progress += (list[i + 1] / list[i + 2]) * weight;
             }
-             
+
             progress = Mathf.Clamp01(progress);
             return progress;
         }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI.Navs;
+using Unity.UI.Navs;
 
 /// <summary>
 /// 实现对话框控制器
@@ -11,12 +11,7 @@ class DialogController : Controller
     public override ViewResult View(string viewName)
     {
 
-        var result = new UIMgrResourcesViewResult()
-        {
-            ViewData = ViewData,
-            ViewName = viewName,
-            Path = "UI/Dialog/" + viewName
-        };
+        var result = new UIMgrResourcesViewResult(viewName, "UI/Dialog/" + viewName,null, Context) ;
 
         return result;
     }

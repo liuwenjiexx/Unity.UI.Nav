@@ -1,7 +1,7 @@
 ﻿using System;
+using Unity.UI.Navs;
+using Unity.UI.Routing;
 using UnityEngine;
-using UnityEngine.UI.Navs;
-using UnityEngine.UI.Navs.Routing;
 
 public class TestScene : MonoBehaviour
 {
@@ -11,11 +11,8 @@ public class TestScene : MonoBehaviour
 
         if (!Nav.Initalized)
         {
-            //开启日志
-            //UINav.LogEnabled = true;
-
             Nav.Initialize();
-            Nav.Root.Routes.Add("scene", new Route("Scene/{scene}", new { controller = "Scene" }, new NavRouteHandler()));
+            Nav.Routes.Add("scene", new Route("Scene/{scene}", new { controller = "Scene" }, new NavRouteHandler()));
 
             //UINav.Push( "Scene/Scene1");
         }
@@ -28,22 +25,25 @@ class SceneController : Controller
 {
 
     class SceneViewResult : ViewResult
-    { 
-        public SceneViewResult(Controller controller, Context context, string sceneName) 
+    {
+        public SceneViewResult(string viewName, string sceneName, Controller controller, NavContext context)
+            : base(viewName, context)
         {
-            this.ViewName = sceneName;
         }
 
 
-        public override void Load(Context context)
+        public override void Load(NavContext context)
         {
-            base.Load(context); 
+            base.Load(context);
             NavLoading.LoadScene(ViewName, "Loading", () =>
             {
                 OnLoaded();
+
+                //场景加载完成后清除
+                Nav.Back(context.Url);
             });
         }
-        
+
     }
 
     public override ViewResult View()
@@ -55,12 +55,12 @@ class SceneController : Controller
 
     public override ViewResult View(string viewName)
     {
-        return new SceneViewResult(this, Context, viewName);
+        return new SceneViewResult(viewName, viewName, this, Context);
     }
 
-    public override void OnEnter(NavMode mode, Context from)
+    public override void OnEnter(NavMode mode, NavContext from)
     {
-        base.OnEnter(mode, from); 
+        base.OnEnter(mode, from);
     }
 
 }

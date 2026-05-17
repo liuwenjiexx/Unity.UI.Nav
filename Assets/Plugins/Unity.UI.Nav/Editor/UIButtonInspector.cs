@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.UI.Navs;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI.Navs;
 
-namespace UnityEditor.UI.Navs
+namespace Unity.UI.Navs.Editor
 {
     [CustomEditor(typeof(UINavButton))]
-    public class UIButtonInspector : Editor
+    public class UIButtonInspector : UnityEditor.Editor
     {
         UINavButton Asset
         {

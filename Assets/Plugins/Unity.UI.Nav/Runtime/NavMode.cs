@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityEngine.UI.Navs
+namespace Unity.UI.Navs
 {
     public enum NavMode
     {
