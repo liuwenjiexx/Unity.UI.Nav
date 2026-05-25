@@ -362,6 +362,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Window1
       objectReference: {fileID: 0}
+    - target: {fileID: 4265436376683876141, guid: 29687899ac2f2f04aaa722850ca92763,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4265436378283647492, guid: 29687899ac2f2f04aaa722850ca92763,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -626,6 +631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Window2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130439046119722904, guid: bf94f825c2e60d34fb8ead44155f6706,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4130439046578774705, guid: bf94f825c2e60d34fb8ead44155f6706,
         type: 3}
@@ -911,6 +921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Reusable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2868468556732525837, guid: 771d497c3b62515409e2527f7d84381d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7274457503894567093, guid: 771d497c3b62515409e2527f7d84381d,
         type: 3}

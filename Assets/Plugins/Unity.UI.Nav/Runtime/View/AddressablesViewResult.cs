@@ -9,7 +9,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Unity.UI.Navs
 {
-    public class AddressableViewResult : GameObjectViewResult
+    public class AddressablesViewResult : GameObjectViewResult
     {
 
         public static Dictionary<string, PrefabState> cachedPrefabHandles;
@@ -30,7 +30,7 @@ namespace Unity.UI.Navs
 
         private Transform parent;
 
-        public AddressableViewResult(string viewName, string assetPath, Transform parent, NavContext context)
+        public AddressablesViewResult(string viewName, string assetPath, Transform parent, NavContext context)
             : base(viewName, context)
         {
             AssetPath = assetPath;

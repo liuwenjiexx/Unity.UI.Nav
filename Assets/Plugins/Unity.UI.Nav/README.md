@@ -336,7 +336,7 @@ UINav.Push("Dialog/YesNo", dialog);
 
 
 
-### 按钮事件
+**按钮事件**
 
 ```c#
 dialog.OnClick = (button) =>
@@ -355,7 +355,7 @@ dialog.OnClick = (button) =>
 };
 ```
 
-**获取点击按钮**
+**关闭事件**
 
 ```c#
 dialog.OnClose = (button) =>
@@ -363,7 +363,7 @@ dialog.OnClose = (button) =>
 };
 ```
 
-**异步获取按钮**
+**异步等待关闭**
 
 ```c#
 yield return new WaitUntil(() => dialog.IsClosed);

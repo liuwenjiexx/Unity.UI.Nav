@@ -23,13 +23,14 @@ namespace Unity.UI.Navs
             }
         }
 
-        void Awake()
+  
+
+        private void Awake()
         {
-            gameObject.SetActive(false);
             Register(ViewName, gameObject);
         }
 
-
+   
         private void OnDestroy()
         {
             Unregister(ViewName, gameObject);

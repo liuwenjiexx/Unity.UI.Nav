@@ -62,11 +62,12 @@ namespace Unity.UI.Navs
 
         public virtual void Close(int button)
         {
-
-            Nav.BackTo(ViewId);
-            Nav.Remove(ViewId);
+            int viewId = ViewId;
+            var model = Model;
             OnClose();
-            Model.Close(button);
+            model.Close(button);
+            Nav.BackTo(viewId);
+            Nav.Remove(viewId);
             //if (lastSelected && lastSelected.activeInHierarchy)
             //{
             //    EventSystem.current.SetSelectedGameObject(lastSelected);

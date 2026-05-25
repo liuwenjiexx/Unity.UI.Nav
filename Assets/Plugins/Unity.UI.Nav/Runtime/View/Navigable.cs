@@ -33,7 +33,7 @@ namespace Unity.UI.Navs
         {
             NavUtility.Log($"[OnLoad] [{name}]");
          
-            Refresh();
+            //Refresh();
         }
 
 
@@ -92,5 +92,6 @@ namespace Unity.UI.Navs
 
         }
 
+     
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Unity.UI.Navs;
 using Unity.UI.Routing;
 using UnityEngine;
@@ -13,6 +14,11 @@ public class TestReusable : MonoBehaviour
 
         Nav.Initialize();
         Nav.Routes.Add("reusable", new Route("Reusable/{action?}/{id?}", new { controller = "Reusable" }, new NavRouteHandler()));
+
+        foreach(var go in Reusable.cached.Values)
+        {
+            go.SetActive(false);
+        }
 
         Nav.PushHome("Reusable");
 
