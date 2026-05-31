@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI.Navs;
+using Kuxue.UI.Navs;
 
 /// <summary>
 /// 实现对话框控制器

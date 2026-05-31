@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.UI.Navs;
+using Kuxue.UI.Navs;
 
 public class DelayLoadingScene : NavLoading
 {
