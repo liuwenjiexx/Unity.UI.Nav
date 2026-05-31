@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Security.Policy;
 using Unity.UI.Routing;
+using UnityEngine;
 
 namespace Unity.UI.Navs
 {
@@ -203,10 +204,11 @@ namespace Unity.UI.Navs
 
         public static bool Back()
         {
-            string current = CurrentUrl;
-            if (!string.IsNullOrEmpty(current))
+            string url = CurrentUrl;
+
+            if (!string.IsNullOrEmpty(url))
             {
-                return Current.Back(current);
+                return Back(url);
             }
             return false;
         }
@@ -217,18 +219,22 @@ namespace Unity.UI.Navs
             return Back(view.ViewId);
         }
 
-        public static bool Back(string name)
+        public static bool Back(string url)
         {
-            return Current.Back(name);
+            var ctx = Current.FindByUrl(url);
+            if (ctx == null) return false;
+            return Back(ctx.Id);
         }
         public static bool Back(int id)
         {
             return Current.Back(id);
         }
 
-        public static void BackTo(string name)
+        public static void BackTo(string url)
         {
-            Current.BackTo(name);
+            var ctx = Current.FindByUrl(url);
+            if (ctx == null) return;
+            BackTo(ctx.Id);
         }
 
         public static void BackTo(int id)
@@ -246,32 +252,42 @@ namespace Unity.UI.Navs
             Current.BackToHome();
         }
 
-        public static bool Contains(string name)
+        public static bool Contains(string url)
         {
-            return Current.Contains(name);
+            return Current.FindByUrl(url) != null;
         }
         public static bool Contains(int id)
         {
-            return Current.Contains(id);
+            return Current.FindById(id) != null;
         }
-        
-        public static bool Remove(string name)
+
+        public static bool IsLoad(int id)
         {
-            return Current.Remove(name);
+            var ctx = Current.FindById(id);
+            if (ctx == null) return false;
+            if (ctx.ViewResult == null) return false;
+            return ctx.ViewResult.IsLoad;
+        }
+
+        public static bool Remove(string url)
+        {
+            var ctx = Current.FindByUrl(url);
+            if (ctx == null) return false;
+            return Remove(ctx.Id);
         }
         public static bool Remove(int id)
         {
             return Current.Remove(id);
         }
-        
+
         public static void Clear()
         {
             Current.Clear();
         }
-        public static bool IsEnter()
-        {
-            return Current.IsEnter();
-        }
+        //public static bool IsEnter()
+        //{
+        //    return Current.IsEnter();
+        //}
 
         public static NavFlags GetFlags(int id)
         {

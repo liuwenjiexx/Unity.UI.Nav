@@ -184,9 +184,10 @@ namespace Unity.UI.Navs
 
                 OnNavEnter(context, mode, from);
                 AfterNavigation?.Invoke(new NavAfterEventArgs(this, mode, context.Url, context.parameter));
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                Debug.LogException(ex); 
+                Debug.LogException(ex);
             }
             return state.Id;
         }
@@ -218,7 +219,7 @@ namespace Unity.UI.Navs
             try
             {
                 routeHandler.ProcessRoute(context);
-                controller = routeHandler.GetController(context); 
+                controller = routeHandler.GetController(context);
                 controller.Initialize(context);
 
                 context.ViewResult = controller.GetActionResult(context.ActionName, context);
@@ -521,6 +522,7 @@ instance = this;
             }
         }
 
+   
 
         public bool Remove(string url)
         {
@@ -736,6 +738,7 @@ instance = this;
                }
                throw new Exception("missing: " + id);*/
         }
+
 
         //public UINavFlags AddFlags(int id, UINavFlags flags)
         //{

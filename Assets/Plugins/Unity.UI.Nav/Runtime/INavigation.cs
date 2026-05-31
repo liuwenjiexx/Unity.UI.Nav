@@ -31,12 +31,6 @@ namespace Unity.UI.Navs
         /// <returns>实例 ID</returns>
         int Navigate(NavOptions options);
 
-
-        /// <summary>
-        /// 卸载当前的UI 同时名称等于 <paramref name="name"/>
-        /// </summary>
-        /// <param name="name"></param>
-        bool Back(string name);
         /// <summary>
         /// 卸载当前的UI <paramref name="id"/>
         /// </summary>
@@ -44,28 +38,23 @@ namespace Unity.UI.Navs
         bool Back(int id);
 
         /// <summary>
-        /// 卸载直到为 <paramref name="name"/> 的UI, 同时保留
-        /// </summary>
-        /// <param name="name"></param>
-        bool BackTo(string name);
-        /// <summary>
         /// 卸载直到为 <paramref name="id"/> 的UI, 同时保留
         /// </summary>
-        /// <param name="name"></param>
         bool BackTo(int id);
         void BackToHome();
 
-        bool Contains(string name);
-        bool Contains(int id);
-        
-        bool Remove(string name);
-        bool Remove(int id);
-        
-        void Clear();
-
-        bool IsEnter();
 
         NavContext FindById(int id);
+
+        NavContext FindByUrl(string url);
+
+         
+        bool Remove(int id);
+
+        void Clear();
+
+        //bool IsEnter();
+
 
 
         //UINavFlags GetFlags(int id);
