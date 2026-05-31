@@ -1,4 +1,4 @@
-﻿namespace Kuxue.UI.Routing
+﻿namespace LWJ.UI.Routing
 {
 
     public class RouteContext

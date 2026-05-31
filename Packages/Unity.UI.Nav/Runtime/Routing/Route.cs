@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace Kuxue.UI.Routing
+namespace LWJ.UI.Routing
 {
 
     /// <summary>

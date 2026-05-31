@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-[assembly: InternalsVisibleTo("Kuxue.UI.Nav.Editor")]
-[assembly: InternalsVisibleTo("Kuxue.UI.Nav.Tests")]
-[assembly: InternalsVisibleTo("Kuxue.UI.Nav.EditorTests")]
+[assembly: InternalsVisibleTo("LWJ.UI.Nav.Editor")]
+[assembly: InternalsVisibleTo("LWJ.UI.Nav.Tests")]
+[assembly: InternalsVisibleTo("LWJ.UI.Nav.EditorTests")]

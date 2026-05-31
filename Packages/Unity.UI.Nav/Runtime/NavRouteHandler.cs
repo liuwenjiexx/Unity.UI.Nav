@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Kuxue.UI.Routing;
+using LWJ.UI.Routing;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     /// <summary>
     /// default route pattern: {controller=Home}/{action?}/{id?}

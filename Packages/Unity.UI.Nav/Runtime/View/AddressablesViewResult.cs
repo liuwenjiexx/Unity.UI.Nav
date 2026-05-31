@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public class AddressablesViewResult : GameObjectViewResult
     {

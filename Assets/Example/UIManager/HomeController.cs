@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Kuxue.UI.Navs;
+using LWJ.UI.Navs;
 
 /// <summary>
 /// 实现主页控制器

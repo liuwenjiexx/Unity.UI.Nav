@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public class NavBackingEventArgs : EventArgs
     {

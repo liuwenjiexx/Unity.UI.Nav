@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Kuxue.UI.Routing
+namespace LWJ.UI.Routing
 {
 
     public class RouteCollection : Collection<Route>

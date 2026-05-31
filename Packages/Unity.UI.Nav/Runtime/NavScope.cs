@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     internal class NavScope : IDisposable
     {

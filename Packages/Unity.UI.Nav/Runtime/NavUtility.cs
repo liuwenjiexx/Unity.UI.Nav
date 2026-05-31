@@ -11,7 +11,7 @@ using Debug = UnityEngine.Debug;
 
  
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public class NavUtility
     {

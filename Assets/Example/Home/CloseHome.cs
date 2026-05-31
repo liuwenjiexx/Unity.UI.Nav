@@ -1,5 +1,5 @@
 using System;
-using Kuxue.UI.Navs;
+using LWJ.UI.Navs;
 using UnityEngine;
 using UnityEngine.UI;
 

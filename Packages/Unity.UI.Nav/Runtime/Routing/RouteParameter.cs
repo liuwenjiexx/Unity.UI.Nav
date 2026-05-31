@@ -1,4 +1,4 @@
-﻿namespace Kuxue.UI.Routing
+﻿namespace LWJ.UI.Routing
 {
 
     internal class RouteParameter

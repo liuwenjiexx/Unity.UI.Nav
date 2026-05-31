@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     public class Navigable : MonoBehaviour, INavigable

@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public abstract class GameObjectViewResult : ViewResult
     {

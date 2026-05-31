@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public enum NavFlags
     {

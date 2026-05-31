@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public class Dialog : Navigable
     {

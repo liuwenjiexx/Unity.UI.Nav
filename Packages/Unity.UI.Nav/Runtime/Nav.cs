@@ -1,5 +1,5 @@
-﻿using Kuxue.Async;
-using Kuxue.UI.Routing;
+﻿using LWJ.Async;
+using LWJ.UI.Routing;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using UnityEngine;
 
 
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     /// <summary>
     /// UI 导航管理器

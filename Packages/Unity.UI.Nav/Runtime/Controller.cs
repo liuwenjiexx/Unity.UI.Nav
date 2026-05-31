@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
-using Kuxue.UI.Routing;
+using LWJ.UI.Routing;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     /// <summary>

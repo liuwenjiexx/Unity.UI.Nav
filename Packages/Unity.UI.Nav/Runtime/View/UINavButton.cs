@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     [RequireComponent(typeof(Button))]

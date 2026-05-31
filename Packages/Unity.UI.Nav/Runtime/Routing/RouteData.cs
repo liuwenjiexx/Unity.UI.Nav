@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Kuxue.UI.Routing
+namespace LWJ.UI.Routing
 {
 
     public class RouteData

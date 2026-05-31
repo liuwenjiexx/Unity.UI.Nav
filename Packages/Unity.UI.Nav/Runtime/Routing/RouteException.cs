@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kuxue.UI.Routing
+namespace LWJ.UI.Routing
 {
     public class RouteException : Exception
     {

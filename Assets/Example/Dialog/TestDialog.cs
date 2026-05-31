@@ -1,5 +1,5 @@
-﻿using Kuxue.UI.Navs;
-using Kuxue.UI.Routing;
+﻿using LWJ.UI.Navs;
+using LWJ.UI.Routing;
 using UnityEngine;
 
 public class TestDialog : MonoBehaviour

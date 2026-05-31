@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     /// <summary>

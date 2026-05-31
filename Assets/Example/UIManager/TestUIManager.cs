@@ -1,4 +1,4 @@
-﻿using Kuxue.UI.Navs;
+﻿using LWJ.UI.Navs;
 using UnityEngine;
 
 //namespace UnityEngine.UI.Navs.Example

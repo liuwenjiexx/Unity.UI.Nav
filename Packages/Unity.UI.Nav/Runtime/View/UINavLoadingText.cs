@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     [RequireComponent(typeof(Text))]

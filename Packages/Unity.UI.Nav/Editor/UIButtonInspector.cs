@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Kuxue.UI.Navs;
+using LWJ.UI.Navs;
 using UnityEditor;
 using UnityEngine;
 
-namespace Kuxue.UI.Navs.Editor
+namespace LWJ.UI.Navs.Editor
 {
     [CustomEditor(typeof(UINavButton))]
     public class UIButtonInspector : UnityEditor.Editor

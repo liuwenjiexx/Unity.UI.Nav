@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Kuxue.UI.Routing;
+using LWJ.UI.Routing;
 using UnityEngine;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     /// <summary>

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     public abstract class NavLoading : MonoBehaviour

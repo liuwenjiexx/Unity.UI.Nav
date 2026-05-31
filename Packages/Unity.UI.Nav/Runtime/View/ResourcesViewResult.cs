@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     public class ResourcesViewResult : GameObjectViewResult
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Kuxue.UI.Routing;
+using LWJ.UI.Routing;
 using System.Text;
 
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
 
     public class NavContext

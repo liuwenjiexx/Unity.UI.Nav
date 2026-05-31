@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using Unity.Loading;
-using Kuxue.UI.Navs;
+using LWJ.UI.Navs;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

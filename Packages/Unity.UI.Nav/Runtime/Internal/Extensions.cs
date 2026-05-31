@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-namespace Kuxue.UI.Navs
+namespace LWJ.UI.Navs
 {
     static partial class  Extensions
     {
