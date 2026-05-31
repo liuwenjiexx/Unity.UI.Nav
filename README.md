@@ -15,7 +15,7 @@ UI界面导航，使用MVC（Model，View，Controller）设计模式分离UI代
 
 
 
-[详细](Assets/Plugins/Unity.UI.Nav)
+[详细](Packages/Unity.UI.Nav)
 
 
 
