@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using LWJ.UI.Navs;
+using Unity.UI.Navs;
 using UnityEngine.EventSystems;
 
-namespace LWJ.UI.Navs.Editor
+namespace Unity.UI.Navs.Editor
 {
 
     public class UINavWindow : EditorWindow

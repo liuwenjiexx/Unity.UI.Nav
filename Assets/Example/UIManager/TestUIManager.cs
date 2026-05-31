@@ -1,4 +1,4 @@
-﻿using LWJ.UI.Navs;
+﻿using Unity.UI.Navs;
 using UnityEngine;
 
 //namespace UnityEngine.UI.Navs.Example

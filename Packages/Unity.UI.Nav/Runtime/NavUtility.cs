@@ -11,7 +11,7 @@ using Debug = UnityEngine.Debug;
 
  
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
     public class NavUtility
     {

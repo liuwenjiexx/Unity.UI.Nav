@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LWJ.UI.Navs;
+using Unity.UI.Navs;
 
 /// <summary>
 /// 实现主页控制器

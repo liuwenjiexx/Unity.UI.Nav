@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace LWJ.UI.Routing
+namespace Unity.UI.Routing
 {
 
     public class RouteCollection : Collection<Route>

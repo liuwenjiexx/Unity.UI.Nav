@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
 
     public abstract class NavLoading : MonoBehaviour

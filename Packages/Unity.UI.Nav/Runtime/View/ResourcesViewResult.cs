@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
     public class ResourcesViewResult : GameObjectViewResult
     {

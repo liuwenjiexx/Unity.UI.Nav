@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
     [RequireComponent(typeof(Slider))]
     public class UINavLoadingSlider : NavLoading

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using LWJ.UI.Navs;
+using Unity.UI.Navs;
 using UnityEditor;
 using UnityEngine;
 
-namespace LWJ.UI.Navs.Editor
+namespace Unity.UI.Navs.Editor
 {
     [CustomEditor(typeof(UINavButton))]
     public class UIButtonInspector : UnityEditor.Editor

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
 
     [RequireComponent(typeof(Text))]

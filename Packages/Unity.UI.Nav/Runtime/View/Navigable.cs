@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
 
     public class Navigable : MonoBehaviour, INavigable

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LWJ.UI.Navs;
+using Unity.UI.Navs;
 
 /// <summary>
 /// 对话框视图

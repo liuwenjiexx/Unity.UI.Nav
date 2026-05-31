@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace LWJ.UI.Navs.Example
+namespace Unity.UI.Navs.Example
 {
     public class HomeView : Navigable
     {

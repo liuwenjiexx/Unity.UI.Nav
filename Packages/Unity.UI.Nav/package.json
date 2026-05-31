@@ -1,5 +1,5 @@
 {
-  "name": "lwj.unity.ui.nav",
+  "name": "unity.ui.nav",
   "displayName": "UI Navigation",
   "version": "0.0.1",
   "unity": "2019.1",
@@ -8,7 +8,7 @@
     "navigation"
   ],
   "dependencies": {
-    "lwj.unity.async": "0.0.3"
+    "unity.async": "0.0.3"
   },
   "category": "UI",
   "author": {

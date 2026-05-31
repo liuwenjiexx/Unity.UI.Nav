@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LWJ.UI.Routing
+namespace Unity.UI.Routing
 {
 
     public class RouteData

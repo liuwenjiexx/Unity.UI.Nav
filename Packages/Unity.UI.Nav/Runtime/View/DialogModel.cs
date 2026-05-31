@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LWJ.UI.Navs
+namespace Unity.UI.Navs
 {
 
     /// <summary>
